@@ -22,7 +22,6 @@ public class Sensor {
         else if(glucoseLevel > user.idealRange){
             statusCode = normHigh;
         }
-        System.out.println(this.statusCode);
         return this.statusCode;
     }
 

@@ -19,4 +19,8 @@ public class Simulation {
         }
     }
 
+    public void addInsulin(Dose dose){
+        this.glucoseLevel -= dose.insulinAmount;
+    }
+
 }

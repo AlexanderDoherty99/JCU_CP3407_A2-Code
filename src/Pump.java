@@ -21,19 +21,20 @@ public class Pump{
         return statusCode;
     }
 
-    public void pumpInsulin(Dose dose) throws PumpException {
+    public void administer(Dose dose, Simulation simulation) throws Exception {
         switch (statusCode){
             case pumping: throw new PumpException("Already pumping");
             case error: throw new PumpException("Pump Error");
             case ready:
                 try{
-                    int pumpingTimePeriod = dose.duration;
+//                    int pumpingTimePeriod = dose.duration;
                     statusCode = pumping;
                     reservoir.sendToPump(dose.insulinAmount);
+                    simulation.addInsulin(dose);
                     break;
-                } catch (Exception e){
+                } catch (Reservoir.ReservoirException e){
                     this.statusCode = error;
-                    throw new PumpException("Pump error");
+                    throw new Reservoir.ReservoirException(e.getMessage());
                 }
         }
         statusCode = ready;
