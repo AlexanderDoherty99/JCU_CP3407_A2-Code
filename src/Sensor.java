@@ -15,7 +15,7 @@ public class Sensor {
         return glucoseLevel;
     }
 
-    public String measure(){
+    public String measure(){ //Detects glucose level and sets status accordingly
         this.glucoseLevel = simulation.getGlucoseLevel();
         if(user.idealRange - user.permittedVariance < glucoseLevel && glucoseLevel < user.idealRange + user.permittedVariance){
             statusCode = Good;

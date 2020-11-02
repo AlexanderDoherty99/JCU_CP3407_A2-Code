@@ -14,8 +14,8 @@ public class Main {
             for(int i = 0; i <= x; i++){
                 testSim.updateSimulation(60); //Update simulation
                 Thread.sleep(500);
-                String sensorStatus = sensor.measure(); //
-                if (sensorStatus == "12"){
+                String sensorStatus = sensor.measure();
+                if (sensorStatus == "12"){ //12 being too high glucose level
                     pump.administer(new Dose(calc.calculateDose(sensor.getGlucoseLevel())), testSim);
                 }
                 System.out.println(sensor.report());

@@ -3,7 +3,7 @@ public class Pump{
     private final String ready = "00", pumping = "01", error = "02", empty = "03";
     private Reservoir reservoir;
 
-    public Pump(Reservoir reservoir){
+    public Pump(Reservoir reservoir){ //Constructor, sets initial statusCode and adds reservoir.
         if (reservoir.getInsulinLevel() > 0){
             this.reservoir = reservoir;
             statusCode = ready;
@@ -21,7 +21,7 @@ public class Pump{
         return statusCode;
     }
 
-    public void administer(Dose dose, Simulation simulation) throws Exception {
+    public void administer(Dose dose, Simulation simulation) throws Exception { //Administers dose with error checking
         switch (statusCode){
             case pumping: throw new PumpException("Already pumping");
             case error: throw new PumpException("Pump Error");
