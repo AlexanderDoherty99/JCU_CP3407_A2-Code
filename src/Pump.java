@@ -28,6 +28,7 @@ public class Pump{
             case ready:
                 try{
 //                    int pumpingTimePeriod = dose.duration;
+                    System.out.println("Administering dose of " + dose.insulinAmount);
                     statusCode = pumping;
                     reservoir.sendToPump(dose.insulinAmount);
                     simulation.addInsulin(dose);

@@ -7,14 +7,18 @@ public class Main {
             Pump pump = new Pump(new Reservoir(150, 150));
             User testUser = new User((float)3.9, 10, (float)0.3);
             Sensor sensor = new Sensor(testSim, testUser);
+            Calculator calc = new Calculator(testUser);
 
-            //Run for 100 cycles
-            for(int i = 0; i <= 100; i++){
+            //Run for x cycles
+            int x = 1000;
+            for(int i = 0; i <= x; i++){
                 testSim.updateSimulation(60); //Update simulation
+                Thread.sleep(500);
                 String sensorStatus = sensor.measure(); //
                 if (sensorStatus == "12"){
-                    pump.administer(new Dose((float)0.5), testSim);
+                    pump.administer(new Dose(calc.calculateDose(sensor.getGlucoseLevel())), testSim);
                 }
+                System.out.println(sensor.report());
             }
         } catch (Exception exception){
             alarm.raiseAlarm(exception);

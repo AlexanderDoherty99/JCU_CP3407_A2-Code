@@ -11,6 +11,10 @@ public class Sensor {
         measure();
     }
 
+    public float getGlucoseLevel() {
+        return glucoseLevel;
+    }
+
     public String measure(){
         this.glucoseLevel = simulation.getGlucoseLevel();
         if(user.idealRange - user.permittedVariance < glucoseLevel && glucoseLevel < user.idealRange + user.permittedVariance){
@@ -23,6 +27,10 @@ public class Sensor {
             statusCode = normHigh;
         }
         return this.statusCode;
+    }
+
+    public String report(){
+        return "Glucose Level: " + glucoseLevel + "\n Status: " + statusCode;
     }
 
     public String getStatusCode() {
