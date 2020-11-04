@@ -3,29 +3,27 @@ public class Simulation {
     private float rateOfChange;
     private int timeUntilRateUpdate;
     private long previousTime;
-    private int secondsPerInterval;
 
     public float getGlucoseLevel() {
         return glucoseLevel;
     }
 
-    public Simulation(float startingGlucoseLevel, int secondsPerInterval){ //Simulation Params
+    public Simulation(float startingGlucoseLevel){ //Simulation Params
         this.glucoseLevel = startingGlucoseLevel;
         this.previousTime = System.currentTimeMillis();
-        this.secondsPerInterval = secondsPerInterval;
-        rateOfChange = (float)(Math.random()+0.2)*2;
+        rateOfChange = (float)(Math.random()+0.2)*4;
         timeUntilRateUpdate = (int)((Math.random()+0.2) * 10);
     }
 
-    public void updateSimulation(int intervals){
-        for(int i = 0; i <= intervals * secondsPerInterval; i++){
-            glucoseLevel += Math.random()/1000 * rateOfChange * secondsPerInterval;
+    public void updateSimulation(int minutes){
+        for(int i = 0; i <= minutes; i++){
+            glucoseLevel += Math.random()/50 * rateOfChange;
 
         }
         timeUntilRateUpdate --;
-        if(timeUntilRateUpdate == 0){
+        if(timeUntilRateUpdate == 0 || glucoseLevel <3.5){
             timeUntilRateUpdate = (int)((Math.random()+0.2) * 10);
-            rateOfChange = (float)(Math.random()+0.2)*2;
+            rateOfChange = (float)(Math.random()-0.35)*2;
         }
     }
 

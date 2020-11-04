@@ -4,7 +4,7 @@ public class Reservoir {
 
     public Reservoir(float totalCapacity, float insulinLevel) throws ReservoirException {
         if (insulinLevel > totalCapacity || insulinLevel < 0 || totalCapacity <= 0){
-            throw new ReservoirException("Invalid constructor parameters!\ninsulinLevel = "
+            throw new ReservoirException("02 - Invalid constructor parameters!\ninsulinLevel = "
                     + insulinLevel
                     + "\ntotalCapacity = "
                     + totalCapacity);
@@ -26,7 +26,7 @@ public class Reservoir {
             insulinLevel -= amount;
         }
         else{
-            throw new ReservoirException("Not enough insulin in reservoir!");
+            throw new ReservoirException("12 - Not enough insulin in reservoir!");
         }
     }
 

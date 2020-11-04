@@ -23,8 +23,8 @@ public class Pump{
 
     public void administer(Dose dose, Simulation simulation) throws Exception { //Administers dose with error checking
         switch (statusCode){
-            case pumping: throw new PumpException("Already pumping");
-            case error: throw new PumpException("Pump Error");
+            case pumping: throw new PumpException("01 - Already pumping");
+            case error: throw new PumpException("02 - Pump Error");
             case ready:
                 try{
 //                    int pumpingTimePeriod = dose.duration;

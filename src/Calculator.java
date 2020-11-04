@@ -1,11 +1,14 @@
 public class Calculator {
-    private final User user;
+    private final Patient patient;
 
-    public Calculator(User user){
-        this.user = user;
+    public Calculator(Patient patient){
+        this.patient = patient;
     }
 
     public float calculateDose(float glucoseLevel){
-        return (float)(glucoseLevel - user.idealRange - (user.idealRange*.05)); //Aim 5% below ideal level
+        if(glucoseLevel > patient.idealRange + patient.permittedVariance){
+            return (float)(glucoseLevel - patient.idealRange - patient.permittedVariance/2); //Aim 10% below ideal level
+        }
+        return 0;
     }
 }
